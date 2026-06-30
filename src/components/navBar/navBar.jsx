@@ -30,7 +30,7 @@ export default function Navbar() {
 
   return (
     <AppBar position="static">
-      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', gap: 2, width: '100%' }}>
         {/* Logo */}
         {/* Grupo botones */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>

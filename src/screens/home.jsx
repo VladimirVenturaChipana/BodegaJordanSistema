@@ -1,10 +1,6 @@
 import { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-
 import MainLayout from '../layouts/MainLayout';
+import PromotionSlider from '../components/sliders/promotionSlider';
 
 import {
   Avatar, AppBar, Badge, Box, Menu, MenuItem, Button, IconButton,
@@ -20,13 +16,13 @@ const BANNERS_DATA = [
 
 const PRODUCTS_DATA = Array.from({ length: 10 });
 
+
 export default function Home() {
 
   return (
     <MainLayout>
-      <Typography>
-        Home
-      </Typography>
+      <PromotionSlider />
     </MainLayout>
   );
 }
+
