@@ -5,7 +5,7 @@ export const BANNERS_DATA = [
     },
     {
         id: 2,
-        image: "https://placehold.net/building-dialog.png",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmFxOd7dJdA_EWRtUgA_Ah2JUsrNFJYVH6ME9ZGVZjla-EsRCbuy_nqxMu&s=10",
     },
     {
         id: 3,
@@ -13,7 +13,7 @@ export const BANNERS_DATA = [
     },
     {
         id: 4,
-        image: "https://placehold.net/building-dialog.png",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmFxOd7dJdA_EWRtUgA_Ah2JUsrNFJYVH6ME9ZGVZjla-EsRCbuy_nqxMu&s=10",
     },
     {
         id: 5,
@@ -21,6 +21,6 @@ export const BANNERS_DATA = [
     },
     {
         id: 6,
-        image: "https://placehold.net/building-dialog.png",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmFxOd7dJdA_EWRtUgA_Ah2JUsrNFJYVH6ME9ZGVZjla-EsRCbuy_nqxMu&s=10",
     },
 ];
