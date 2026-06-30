@@ -9,6 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Home from './screens/home';
 import Category from './screens/category';
 import Product from './screens/product';
+import Profile from './screens/profile';
 
 import './App.css';
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/category" element={<Category />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

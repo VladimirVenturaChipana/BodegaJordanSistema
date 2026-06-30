@@ -16,7 +16,7 @@ export const CATEGORIES_OPTIONS = [
 ];
 
 export const socialNetworks = [
-    { name: "Facebook", url: "", icon: Icons.FacebookIcon },
-    { name: "Instagram", url: "", icon: Icons.InstagramIcon },
-    { name: "TikTok", url: "", icon: Icons.TiktokIcon },
+    { name: "Facebook", url: "https://www.figma.com/design/zSk6Dc5rFClqcCXtPfqt6j/Mockup?node-id=0-1&p=f&t=oz1FcPPcB34axz94-0", icon: Icons.FacebookIcon },
+    { name: "Instagram", url: "https://www.figma.com/design/zSk6Dc5rFClqcCXtPfqt6j/Mockup?node-id=0-1&p=f&t=oz1FcPPcB34axz94-0", icon: Icons.InstagramIcon },
+    { name: "TikTok", url: "https://www.figma.com/design/zSk6Dc5rFClqcCXtPfqt6j/Mockup?node-id=0-1&p=f&t=oz1FcPPcB34axz94-0", icon: Icons.TiktokIcon },
 ]

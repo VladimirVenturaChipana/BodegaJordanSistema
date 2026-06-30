@@ -16,12 +16,11 @@ export default function PromotionSlider() {
   return (
     <Box
       sx={{
+        bgcolor: 'ActiveText',
         width: '100%',
-        // Incrementé ligeramente los ratios para dar más "aire" vertical
-        aspectRatio: { xs: '4/3', sm: '16/7', lg: '3/1' },
-        // Aumenté el minHeight en todos los puntos para mayor presencia
-        minHeight: { xs: '300px', sm: '450px', lg: '800px' },
-        maxHeight: { lg: '800px' },
+        aspectRatio: { xs: '16/9', sm: '3/1', lg: '3/1' },
+        minHeight: { xs: '250px', sm: '350px', lg: '400px' },
+        maxHeight: { lg: '450px' },
         overflow: 'hidden',
         '& .swiper-pagination': {
           bottom: '10px',
