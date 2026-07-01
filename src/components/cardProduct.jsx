@@ -59,7 +59,6 @@ export default function MediaCard({ product }) {
             color: 'warning.contrastText',
             px: 0.5,
             py: 0.2,
-            borderRadius: 1,
             fontSize: '0.75rem',
             fontWeight: 'bold'
           }}>
