@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import MainLayout from '../layouts/MainLayout';
+import { Box } from "@mui/material";
+import MainLayout from '../layouts/mainLayout';
 import PromotionSlider from '../components/sliders/promotion/promotionSlider';
 import SliderProducts from '../components/sliders/products/productsSlider';
 import CategoryGrid from '../components/grids/categoryGrid';
@@ -28,6 +29,7 @@ export default function Home() {
       <CategoryGrid />
       <SliderProducts highlightTitle='BEBIDAS' title='DEL MOMENTO' products={bebidas} />
       <SliderProducts highlightTitle='LICORES' title='PARA TU FIN DE SEMANA' products={licores} />
+      <Box sx={{ height: '60px', display: { xs: 'block', sm: 'none' } }} />
     </MainLayout>
   );
 }
