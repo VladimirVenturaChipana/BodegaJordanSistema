@@ -90,7 +90,7 @@ export default function Navbar() {
               />
             </>
           ) : (
-            <IconButton color="inherit" component="a" href="/profile">
+            <IconButton color="inherit" component="a" href="/product">
               <Avatar src="..." />
             </IconButton>
           )}
