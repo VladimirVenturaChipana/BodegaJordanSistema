@@ -63,12 +63,12 @@ export default function MediaCard({ product }) {
             fontSize: '0.75rem',
             fontWeight: 'bold'
           }}>
-            {p.discount}
+            {/* {p.discount} */}
           </Box>
         </Box>
-        <Typography variant="body2" color="text.disabled" sx={{ textDecoration: 'line-through', mt: 0.5 }}>
+        {/* <Typography variant="body2" color="text.disabled" sx={{ textDecoration: 'line-through', mt: 0.5 }}>
           S/. {p.oldPrice}
-        </Typography>
+        </Typography> */}
       </CardContent>
       <IconButton
         sx={{
