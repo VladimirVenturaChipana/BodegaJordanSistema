@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import MainLayout from "../layouts/MainLayout";
+import MainLayout from "../layouts/mainLayout";
 
 export default function Profile() {
     return (

@@ -14,15 +14,20 @@ export default function CategoryGrid() {
 
   return (
     <Container maxWidth="xl" sx={{ py: 6 }}>
+
       <Typography variant="h3" sx={{ mb: 4, fontWeight: 'bold', textAlign: 'center' }}>
         NUESTROS PRODUCTOS
       </Typography>
+
       <Grid container spacing={3}>
         {categorias.map((item) => (
           <Grid key={item.idcategoria} size={{ xs: 6, sm: 4, md: 2.4 }}>
             <Paper elevation={3} sx={{
-              aspectRatio: '1/1', borderRadius: 3, overflow: 'hidden',
-              cursor: 'pointer', transition: 'transform 0.2s ease-in-out',
+              aspectRatio: '1/1',
+              borderRadius: 3,
+              overflow: 'hidden',
+              cursor: 'pointer',
+              transition: 'transform 0.2s ease-in-out',
               '&:hover': { transform: 'scale(1.05)' },
             }}>
               <img

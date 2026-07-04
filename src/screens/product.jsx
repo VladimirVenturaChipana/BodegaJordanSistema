@@ -38,7 +38,17 @@ export default function Product() {
       <Box sx={{ maxWidth: 'lg', mx: 'auto', mt: 2, padding: 2 }}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} sx={{ position: 'relative' }}>
-            <img src={product.image} height="375px" style={{ width: '100%', objectFit: 'contain' }} alt={product.title} />
+            <Box
+                component="img"
+                src={product.image}
+                alt={product.title}
+                sx={{
+                  width: '100%',
+                  height: { xs: 220, sm: 300, md: 375 },
+                  objectFit: 'contain',
+                  display: 'block',
+                }}
+              />
             <IconButton sx={{ position: 'absolute', top: 10, right: 10 }}>
               <FavoriteBorderIcon />
             </IconButton>
