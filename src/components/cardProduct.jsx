@@ -54,7 +54,7 @@ export default function MediaCard({ product }) {
           <Typography variant="h6" color="primary" sx={{ fontWeight: 'bold', lineHeight: 1 }}>
             S/. {p.price}
           </Typography>
-          <Box sx={{
+          {/* <Box sx={{
             bgcolor: 'warning.main',
             color: 'warning.contrastText',
             px: 0.5,
@@ -62,8 +62,8 @@ export default function MediaCard({ product }) {
             fontSize: '0.75rem',
             fontWeight: 'bold'
           }}>
-            {/* {p.discount} */}
-          </Box>
+            {p.discount}
+          </Box> */}
         </Box>
         {/* <Typography variant="body2" color="text.disabled" sx={{ textDecoration: 'line-through', mt: 0.5 }}>
           S/. {p.oldPrice}
