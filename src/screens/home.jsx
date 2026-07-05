@@ -29,6 +29,9 @@ export default function Home() {
       <CategoryGrid />
       <SliderProducts highlightTitle='BEBIDAS' title='DEL MOMENTO' products={bebidas} />
       <SliderProducts highlightTitle='LICORES' title='PARA TU FIN DE SEMANA' products={licores} />
+      <SliderProducts highlightTitle='SNACKS' title='PARA ACOMPAÑAR' products={licores} />
+      <SliderProducts highlightTitle='GOLOSINAS' title='PARA ENDULZAR TU DIA' products={licores} />
+      <SliderProducts highlightTitle='HELADOS' title='EN ESTOS DÍAS CALUROSOS' products={licores} />
       <Box sx={{ height: '60px', display: { xs: 'block', sm: 'none' } }} />
     </MainLayout>
   );
