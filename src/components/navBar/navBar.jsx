@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AppBar, Toolbar, Button, Box, IconButton, Badge, Avatar, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 import SearchBar from "../searchBar";
 import GenericMenu from "../menus";
 import ElevationScroll from "./elevationScroll";
@@ -14,6 +15,8 @@ export default function Navbar() {
 
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('sm'));
+
+  const navigate = useNavigate();
 
   return (
     <React.Fragment>
@@ -54,7 +57,7 @@ export default function Navbar() {
                   open={Boolean(anchorCat)}
                   onClose={() => setAnchorCat(null)}
                   items={CATEGORIES_OPTIONS}
-                  onItemClick={(item) => console.log(item)}
+                  onItemClick={(item) => navigate(`/category/${item.text.toLowerCase()}`)}
                 />
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>

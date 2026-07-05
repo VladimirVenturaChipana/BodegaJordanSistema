@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { lightTheme, darkTheme } from './assets/theme';
@@ -13,9 +12,7 @@ import Profile from './screens/profile';
 
 import './App.css';
 
-
 function App() {
-
   const [isLight, setIsLight] = useState(true);
 
   return (
@@ -24,7 +21,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/category" element={<Category />} />
+          <Route path="/category/:categoryName" element={<Category />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>

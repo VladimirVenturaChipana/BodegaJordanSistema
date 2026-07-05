@@ -41,7 +41,6 @@ export default function Product() {
     <MainLayout>
       <Box sx={{ display: 'flex', justifyContent: 'center', px: { xs: 2, md: 4 }, py: { xs: 2, md: 4 } }}>
         <Grid container spacing={4} sx={{ maxWidth: 900, width: '100%', alignItems: 'center' }}>
-
           <Grid size={{ xs: 12, sm: 6 }} sx={{ position: 'relative' }}>
             <Box
               component="img"
@@ -58,23 +57,19 @@ export default function Product() {
               <FavoriteBorderIcon />
             </IconButton>
           </Grid>
-
           <Grid size={{ xs: 12, sm: 6 }} sx={{ px: { xs: 4, sm: 0 } }}>
             <Typography sx={{ textTransform: 'uppercase', fontWeight: 'bold', fontSize: '1.3rem' }}>
               {product.title}
             </Typography>
-
             <Typography sx={{ fontWeight: 'regular', fontSize: '0.9rem', mb: 1 }}>
               {product.brand}
             </Typography>
-
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
               <Box sx={{ bgcolor: 'warning.main', px: 1, py: 0.5, fontWeight: 'bold', display: 'inline-block' }}>
                 {product.discount}
               </Box>
               <Typography variant="body2" color="text.secondary">{product.code}</Typography>
             </Box>
-
             <Box sx={{ mb: 2 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Typography color="secondary" sx={{ fontWeight: 'bold' }}>Precio en oferta</Typography>
@@ -85,7 +80,6 @@ export default function Product() {
                 <Typography sx={{ textDecoration: 'line-through' }}>S/. {product.oldPrice}</Typography>
               </Box>
             </Box>
-
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 0.5, mb: 1 }}>
               <Rating
                 value={review}
@@ -97,7 +91,6 @@ export default function Product() {
                 ({product.reviewsCount} reseñas)
               </Typography>
             </Box>
-
             <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', mt: 3, flexWrap: { xs: 'wrap', sm: 'nowrap' }, justifyContent: 'space-between' }}>
               <Box sx={{
                 display: 'flex',
@@ -117,7 +110,6 @@ export default function Product() {
                   <AddIcon fontSize="small" />
                 </IconButton>
               </Box>
-
               <Button
                 variant="contained"
                 color="primary"
@@ -134,7 +126,6 @@ export default function Product() {
           </Grid>
         </Grid>
       </Box>
-
       <Box sx={{ maxWidth: 'xl', mx: 'auto', mt: 1 }}>
         <Box >
           <SliderProducts highlightTitle="Productos" title="similares" />

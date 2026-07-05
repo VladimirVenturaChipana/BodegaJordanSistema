@@ -18,6 +18,7 @@ export { default as HomeIcon } from '@mui/icons-material/Home';
 export { default as IceCreamIcon } from '@mui/icons-material/IceCream';
 export { default as InstagramIcon } from '@mui/icons-material/Instagram';
 export { default as KeyboardArrowDownIcon } from '@mui/icons-material/KeyboardArrowDown';
+export { default as KeyboardArrowUpIcon } from '@mui/icons-material/KeyboardArrowUp';
 export { default as LiquorIcon } from '@mui/icons-material/Liquor';
 export { default as ListIcon } from '@mui/icons-material/List';
 export { default as LocalMallIcon } from '@mui/icons-material/LocalMall';
