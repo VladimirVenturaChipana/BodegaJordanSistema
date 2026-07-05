@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Typography, Container, useTheme } from '@mui/material';
 import MediaCard from '../../cardProduct';
 
 export default function SliderProducts({
@@ -12,14 +12,31 @@ export default function SliderProducts({
   title = "PARA TU FIN DE SEMANA",
   products = []
 }) {
-  // Si no hay productos, creamos 5 vacíos para mostrar el diseño
+  const theme = useTheme();
+
   const displayProducts = products.length > 0 ? products : Array.from({ length: 10 });
 
   return (
     <Container maxWidth="xl">
-      <Box sx={{ width: '100%', py: 2, px: { xs: 2, md: 4 } }}>
+      <Box sx={{
+        width: '100%',
+        py: 2,
+        px: { xs: 2, md: 4 },
+        position: 'relative',
+        '& .swiper': {
+          px: { md: 3 },
+        },
+        '& .swiper-button-next, & .swiper-button-prev': {
+          color: 'primary.main',
+          display: { xs: 'none', md: 'flex' },
+          opacity: 0,
+          transition: 'opacity 0.3s ease-in-out',
+        },
+        '&:hover .swiper-button-next, &:hover .swiper-button-prev': {
+          opacity: 1,
+        }
+      }}>
 
-        {/* Título a dos colores */}
         <Typography variant="h5" sx={{ mb: 3, textTransform: 'uppercase' }}>
           <Box component="span" sx={{ color: 'primary.main', fontWeight: 900 }}>
             {highlightTitle}
@@ -31,28 +48,27 @@ export default function SliderProducts({
 
         <Swiper
           modules={[Navigation, Pagination, FreeMode]}
-          spaceBetween={16}
           freeMode={true}
           navigation={true}
           breakpoints={{
-            320: {
-              slidesPerView: 1.2,
+            [theme.breakpoints.values.xs]: {
+              slidesPerView: 2.1,
               spaceBetween: 10,
             },
-            480: {
-              slidesPerView: 2.2,
+            [theme.breakpoints.values.sm]: {
+              slidesPerView: 2.8,
               spaceBetween: 15,
             },
-            768: {
-              slidesPerView: 3.2,
-              spaceBetween: 20,
-            },
-            1024: {
+            [theme.breakpoints.values.md]: {
               slidesPerView: 4,
               spaceBetween: 20,
             },
-            1200: {
+            [theme.breakpoints.values.lg]: {
               slidesPerView: 5,
+              spaceBetween: 20,
+            },
+            [theme.breakpoints.values.xl]: {
+              slidesPerView: 5.5,
               spaceBetween: 20,
             },
           }}
