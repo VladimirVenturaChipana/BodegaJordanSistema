@@ -3,15 +3,21 @@ import { useParams } from "react-router-dom";
 import { Box, Grid, Typography, IconButton, Button, Rating } from "@mui/material";
 import { AddIcon, RemoveIcon, FavoriteBorderIcon } from "../shared/icons";
 import SliderProducts from "../components/sliders/products/productsSlider";
+import NumberField from "../components/numberField"
 import MainLayout from "../layouts/mainLayout";
 
 export default function Product() {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState();
   const [quantity, setQuantity] = useState(1);
   const [review, setReview] = useState(2);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
+    fetch(`${API_URL}/api/productos/${id}`)
+      .then(res => res.json())
+      .then(data => setProduct(data));
     // TODO: Consumir API aquí -> fetch(`/api/products/${id}`).then(...)
     setProduct({
       id: id,
@@ -27,13 +33,11 @@ export default function Product() {
     });
   }, [id]);
 
-  const handleIncrement = () => {
-    setQuantity((prev) => prev + 1);
-  };
+  const hasDiscount = product.discount != null && product.discount > 0;
 
-  const handleDecrement = () => {
-    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
-  };
+  const finalPrice = hasDiscount
+    ? (product.oldPrice * (1 - product.discount / 100)).toFixed(2)
+    : Number(product.oldPrice).toFixed(2);
 
   if (!product) return <Box sx={{ p: 4 }}>Cargando producto...</Box>;
 
@@ -65,20 +69,47 @@ export default function Product() {
               {product.brand}
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-              <Box sx={{ bgcolor: 'warning.main', px: 1, py: 0.5, fontWeight: 'bold', display: 'inline-block' }}>
-                {product.discount}
-              </Box>
-              <Typography variant="body2" color="text.secondary">{product.code}</Typography>
+              {product.discount != null ? (
+                <Box sx={{ bgcolor: 'warning.main', px: 1, py: 0.5, fontWeight: 'bold', display: 'inline-block' }}>
+                  {product.discount}
+                </Box>
+              ) : (
+                <Box />
+              )}
+              <Typography variant="body2" color="text.secondary">
+                COD: {product.codbar}
+              </Typography>
             </Box>
             <Box sx={{ mb: 2 }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Typography color="secondary" sx={{ fontWeight: 'bold' }}>Precio en oferta</Typography>
-                <Typography variant="h5" color="secondary" sx={{ fontWeight: 'bold' }}>S/. {product.price}</Typography>
-              </Box>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Typography>Precio regular</Typography>
-                <Typography sx={{ textDecoration: 'line-through' }}>S/. {product.oldPrice}</Typography>
-              </Box>
+              {hasDiscount ? (
+                <>
+                  {/* CASO A: SÍ HAY DESCUENTO -> Mostramos ambos precios */}
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Typography color="secondary" sx={{ fontWeight: 'bold' }}>
+                      Precio en oferta
+                    </Typography>
+                    <Typography variant="h5" color="secondary" sx={{ fontWeight: 'bold' }}>
+                      S/. {finalPrice}
+                    </Typography>
+                  </Box>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Typography>Precio regular</Typography>
+                    <Typography sx={{ textDecoration: 'line-through' }}>
+                      S/. {Number(product.oldPrice).toFixed(2)}
+                    </Typography>
+                  </Box>
+                </>
+              ) : (
+                /* CASO B: NO HAY DESCUENTO -> Solo mostramos el precio regular, pero con el diseño resaltado (Morado/H5) */
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Typography color="secondary" sx={{ fontWeight: 'bold' }}>
+                    Precio
+                  </Typography>
+                  <Typography variant="h5" color="secondary" sx={{ fontWeight: 'bold' }}>
+                    S/. {product.price}
+                  </Typography>
+                </Box>
+              )}
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 0.5, mb: 1 }}>
               <Rating
@@ -88,28 +119,11 @@ export default function Product() {
                 size="large"
               />
               <Typography variant="body" color="text.secondary" sx={{ mt: 0.5 }}>
-                ({product.reviewsCount} reseñas)
+                ({product.reviewsCount}10)
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', mt: 3, flexWrap: { xs: 'wrap', sm: 'nowrap' }, justifyContent: 'space-between' }}>
-              <Box sx={{
-                display: 'flex',
-                alignItems: 'center',
-                border: '1px solid',
-                borderColor: 'divider',
-                borderRadius: 1,
-                bgcolor: 'background.paper'
-              }}>
-                <IconButton onClick={handleDecrement} disabled={quantity <= 1} size="small" sx={{ p: 1 }}>
-                  <RemoveIcon fontSize="small" />
-                </IconButton>
-                <Typography sx={{ width: 40, textAlign: 'center', fontWeight: 'medium', userSelect: 'none' }}>
-                  {quantity}
-                </Typography>
-                <IconButton onClick={handleIncrement} size="small" sx={{ p: 1 }}>
-                  <AddIcon fontSize="small" />
-                </IconButton>
-              </Box>
+              <NumberField />
               <Button
                 variant="contained"
                 color="primary"

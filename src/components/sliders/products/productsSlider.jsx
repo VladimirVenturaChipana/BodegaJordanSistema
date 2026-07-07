@@ -12,9 +12,12 @@ export default function SliderProducts({
   title = "PARA TU FIN DE SEMANA",
   products = []
 }) {
+
   const theme = useTheme();
 
-  const displayProducts = products.length > 0 ? products : Array.from({ length: 10 });
+  const displayProducts = products.length > 0
+    ? products.slice(0, 8)
+    : Array.from({ length: 8 });
 
   return (
     <Container maxWidth="xl">

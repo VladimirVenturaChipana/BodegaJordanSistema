@@ -5,6 +5,7 @@ import {
   Grid,
   Typography
 } from "@mui/material";
+import SidebarFiltros from "../components/sideBarFilters"
 
 export default function Category() {
   const { categoryName } = useParams();
@@ -20,7 +21,7 @@ export default function Category() {
         <Grid size={{ xs: 12 }} sx={{ display: 'flex' }}>
           {/* Seccion de filtros */}
           <Grid size={{ xs: 12, sm: 4, md: 3 }}>
-            <AcordionFilter />
+            <SidebarFiltros categoriaActual={categoryName} />
           </Grid>
           {/* Seccion de productos */}
           <Grid size={{ xs: 12, sm: 8, md: 9 }}>

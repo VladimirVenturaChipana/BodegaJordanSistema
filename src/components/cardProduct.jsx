@@ -17,9 +17,7 @@ export default function MediaCard({ product }) {
   const navigate = useNavigate();
 
   const handleProductClick = () => {
-    // que abra la pagina de product con el id del producto
-    window.location.href = `/product/${p.id}`;
-
+    navigate(`/product/${p.id}`);
   };
 
   return (
@@ -30,12 +28,15 @@ export default function MediaCard({ product }) {
         height: 'auto',
         position: 'relative',
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        '&:hover': {
+          transition: 'transform 0.35s ease-in-out',
+          transform: 'scale(1.03)',
+        },
       }}
     >
       <CardMedia
         sx={{
-          // Reducimos la altura en móviles (xs) y la mantenemos en 200 para el resto
           height: { xs: 120, sm: 200 },
           backgroundSize: 'contain',
           backgroundPosition: 'center'
@@ -44,26 +45,24 @@ export default function MediaCard({ product }) {
         title={p.title}
       />
       <CardContent sx={{
-        // Menos padding en móviles para ganar espacio
         p: { xs: 1.5, sm: 2 },
         minHeight: { xs: 130, sm: 160 },
-        // Añadimos padding-bottom extra para que el texto no choque con el botón flotante
         pb: { xs: 6, sm: 7 }
       }}>
-        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', textTransform: 'uppercase', fontWeight: 'bold', fontSize: { xs: '0.65rem', sm: '0.75rem' } }}>
+        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', textTransform: 'uppercase', fontWeight: 'bold', fontSize: { xs: '0.65rem', sm: '0.75rem' }, }} noWrap>
           {p.brand}
         </Typography>
         <Typography variant="body2" sx={{
           fontWeight: 'medium',
           lineHeight: 1.2,
           my: 0.5,
-          height: { xs: '2.2em', sm: '2.4em' }, // Ajuste sutil para el texto
+          height: { xs: '2.2em', sm: '2.4em' },
           overflow: 'hidden',
           textOverflow: 'ellipsis',
           display: '-webkit-box',
           WebkitLineClamp: 2,
           WebkitBoxOrient: 'vertical',
-          fontSize: { xs: '0.8rem', sm: '0.875rem' }
+          fontSize: { xs: '0.8rem', sm: '0.875rem' },
         }}>
           {p.title}
         </Typography>
@@ -75,17 +74,19 @@ export default function MediaCard({ product }) {
           <Typography variant="h6" color="primary" sx={{ fontWeight: 'bold', lineHeight: 1, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
             S/. {p.price}
           </Typography>
-          <Box sx={{
-            bgcolor: 'error.main',
-            color: 'error.contrastText',
-            px: 0.5,
-            py: 0.2,
-            fontSize: { xs: '0.65rem', sm: '0.75rem' },
-            fontWeight: 'bold',
-            borderRadius: 1
-          }}>
-            {p.discount}
-          </Box>
+          {p.discount != null ? (
+            <Box sx={{
+              bgcolor: 'error.main',
+              color: 'error.contrastText',
+              px: 0.5,
+              py: 0.2,
+              fontSize: { xs: '0.65rem', sm: '0.75rem' },
+              fontWeight: 'bold',
+              borderRadius: 1
+            }}>
+              {p.discount}
+            </Box>
+          ) : null}
         </Box>
       </CardContent>
 
