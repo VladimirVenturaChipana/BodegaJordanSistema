@@ -82,7 +82,6 @@ export default function Navbar() {
                 )}
               </Box>
             </Box>
-
           </Toolbar>
         </AppBar>
       </ElevationScroll>

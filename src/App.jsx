@@ -5,9 +5,9 @@ import { lightTheme, darkTheme } from './assets/theme';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
-import Home from './screens/home';
+import Home from './screens/home/home';
 import Category from './screens/category';
-import Product from './screens/product';
+import Product from './screens/product/product';
 import Profile from './screens/profile';
 
 import './App.css';

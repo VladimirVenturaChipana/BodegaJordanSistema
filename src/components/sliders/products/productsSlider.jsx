@@ -1,8 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, FreeMode } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 import { Box, Typography, Container, useTheme } from '@mui/material';
 import MediaCard from '../../cardProduct';
@@ -50,16 +49,15 @@ export default function SliderProducts({
         </Typography>
 
         <Swiper
-          modules={[Navigation, Pagination, FreeMode]}
-          freeMode={true}
+          modules={[Navigation]}
           navigation={true}
           breakpoints={{
             [theme.breakpoints.values.xs]: {
-              slidesPerView: 2.1,
+              slidesPerView: 2,
               spaceBetween: 10,
             },
             [theme.breakpoints.values.sm]: {
-              slidesPerView: 2.8,
+              slidesPerView: 3,
               spaceBetween: 15,
             },
             [theme.breakpoints.values.md]: {
@@ -71,7 +69,7 @@ export default function SliderProducts({
               spaceBetween: 20,
             },
             [theme.breakpoints.values.xl]: {
-              slidesPerView: 5.5,
+              slidesPerView: 5,
               spaceBetween: 20,
             },
           }}
