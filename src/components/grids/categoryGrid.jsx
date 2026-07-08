@@ -20,32 +20,27 @@ export default function CategoryGrid() {
           mb: 4,
           fontWeight: 'bold',
           textAlign: 'center',
-          // Controlamos el tamaño de la letra según la pantalla:
           fontSize: {
-            xs: '1.6rem',   // Tamaño ideal para celulares (más compacto)
-            sm: '2.2rem',   // Para tablets
-            md: '2.8rem'    // Su tamaño original grande para laptops/PC
+            xs: '1.6rem',
+            sm: '2.2rem',
+            md: '2.8rem'
           }
         }}
       >
         NUESTROS PRODUCTOS
       </Typography>
-      {/* 1. Reemplazamos el Grid container por un Box con Flexbox puro */}
       <Box
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
-          gap: { xs: 1, sm: 3 },       // Espaciado controlado entre tarjetas
-          justifyContent: 'center',    // ¡ESTO centrará perfectamente el elemento impar abajo!
+          gap: { xs: 1, sm: 3 },
+          justifyContent: 'center',
         }}
       >
         {categorias.map((item) => (
-          /* 2. Reemplazamos el Grid item por un Box con anchos calculados dinámicamente */
           <Box
             key={item.idcategoria}
             sx={{
-              // Calculamos el ancho restándole el espacio del gap:
-              // xs: 2 columnas (50%) | sm: 3 columnas (33.33%) | md: 5 columnas (20%)
               width: {
                 xs: 'calc(50% - 8px)',
                 sm: 'calc(33.33% - 16px)',
@@ -61,7 +56,7 @@ export default function CategoryGrid() {
               sx={{
                 aspectRatio: '1/1',
                 width: '100%',
-                maxWidth: { xs: 140, sm: '100%' }, // Mantenemos tu reducción de tamaño en celulares
+                maxWidth: { xs: 140, sm: '100%' },
                 borderRadius: 3,
                 overflow: 'hidden',
                 cursor: 'pointer',
@@ -81,7 +76,7 @@ export default function CategoryGrid() {
                 mt: 1,
                 textAlign: 'center',
                 fontWeight: 500,
-                fontSize: { xs: '1rem', sm: '1.25rem' } // Tu ajuste de letra para celular
+                fontSize: { xs: '1rem', sm: '1.25rem' }
               }}
             >
               {item.deslin}

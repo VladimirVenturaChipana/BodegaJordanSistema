@@ -12,13 +12,15 @@ export default function ProductInfo({ product }) {
     ? (Number(product.oldPrice) * (1 - Number(product.discount) / 100)).toFixed(2)
     : Number(product.price).toFixed(2);
 
+  const hasCodbar = product.codbar != null;
+
   return (
     <Grid size={{ xs: 12, sm: 6 }} sx={{ px: { xs: 4, sm: 0 } }}>
       <Typography sx={{ textTransform: 'uppercase', fontWeight: 'bold', fontSize: '1.3rem' }}>
         {product.title}
       </Typography>
       <Typography sx={{ fontWeight: 'regular', fontSize: '0.9rem', mb: 1 }}>
-        {product.brand}
+        {product.marca}
       </Typography>
 
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
@@ -30,7 +32,11 @@ export default function ProductInfo({ product }) {
           <Box />
         )}
         <Typography variant="body2" color="text.secondary">
-          COD: {product.codbar}
+          {hasCodbar ? (`COD: ${product.codbar}`) : (
+            <Typography color="text.secondary">
+              Sin código de barras
+            </Typography>
+          )}
         </Typography>
       </Box>
       <Box sx={{ mb: 2 }}>

@@ -50,7 +50,7 @@ export default function MediaCard({ product }) {
         pb: { xs: 6, sm: 7 }
       }}>
         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', textTransform: 'uppercase', fontWeight: 'bold', fontSize: { xs: '0.65rem', sm: '0.75rem' }, }} noWrap>
-          {p.brand}
+          {p.marca}
         </Typography>
         <Typography variant="body2" sx={{
           fontWeight: 'medium',
