@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchBar from "../searchBar";
 import GenericMenu from "../menus";
 import ElevationScroll from "./elevationScroll";
+import ThemeToggler from "../themeToggler";
 import BottomNav from "./bottomNavigation";
 import { KeyboardArrowDownIcon } from "../../shared/icons";
 import { AVATAR_OPTIONS, CATEGORIES_OPTIONS, socialNetworks } from "./navBarConstants";
@@ -59,6 +60,9 @@ export default function Navbar() {
                   items={CATEGORIES_OPTIONS}
                   onItemClick={(item) => navigate(`/category/${item.text.toLowerCase()}`)}
                 />
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <ThemeToggler />
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 {isDesktop ? (

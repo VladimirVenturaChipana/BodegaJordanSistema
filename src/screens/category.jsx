@@ -15,7 +15,6 @@ export default function Category() {
 
   const itemsPerPage = 60;
 
-  // Cargar productos de la categoría seleccionada
   useEffect(() => {
     setLoading(true);
     setCurrentPage(1);
@@ -33,30 +32,25 @@ export default function Category() {
       });
   }, [categoryName]);
 
-  // Manejar el cambio de filtros desde el Sidebar
   const handleFilterChange = (filters) => {
     if (!allProducts || allProducts.length === 0) return;
 
     const filtered = allProducts.filter(p => {
-      // 1. Filtrar por Marcas
       if (filters.marcas.length > 0) {
         const brand = (p.marca || p.brand || "OTROS").toUpperCase();
         if (!filters.marcas.includes(brand)) return false;
       }
 
-      // 2. Filtrar por Presentación
       if (filters.presentaciones.length > 0) {
         const unit = (p.unit || "OTROS").toUpperCase();
         if (!filters.presentaciones.includes(unit)) return false;
       }
 
-      // 3. Filtrar por Rango de Precio
       const price = Number(p.price);
       if (!isNaN(price)) {
         if (price < filters.precioMin || price > filters.precioMax) return false;
       }
 
-      // 4. Filtrar por Solo Promoción / Oferta
       if (filters.oferta) {
         const hasDiscount = p.discount != null && p.discount !== "" && p.discount !== 0 && p.discount !== "0";
         if (!hasDiscount) return false;
@@ -66,7 +60,7 @@ export default function Category() {
     });
 
     setFilteredProducts(filtered);
-    setCurrentPage(1); // Reiniciar a la primera página cuando cambian los filtros
+    setCurrentPage(1);
   };
 
   // Paginación

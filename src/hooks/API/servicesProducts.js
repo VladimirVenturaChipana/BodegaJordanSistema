@@ -69,7 +69,7 @@ export const getCategoryProductsByName = async (categoryName) => {
             throw new Error("Error al obtener la lista de categorías");
         }
         const categories = await resCat.json();
-        
+
         // 2. Buscar la categoría por nombre (caso insensible)
         const found = categories.find(c => c.deslin.toLowerCase() === categoryName.toLowerCase());
         if (!found) {
@@ -85,3 +85,32 @@ export const getCategoryProductsByName = async (categoryName) => {
     }
 };
 
+/**
+ * Busca productos por coincidencia de texto.
+ * @param {string} searchTerm - Texto a buscar
+ * @returns {Promise<Array>} Lista de productos encontrados
+ */
+export const searchProductsByName = async (searchTerm) => {
+    try {
+        // Usamos la ruta que SÍ existe en el backend de tu compañera
+        const res = await fetch(`${API_URL}/api/productos`);
+
+        if (!res.ok) {
+            throw new Error("Error al obtener el catálogo general");
+        }
+
+        const allProducts = await res.json();
+
+        // Filtramos en el frontend
+        const term = searchTerm.toLowerCase();
+        const filtered = allProducts.filter(p =>
+            // OJO: Usamos p.title porque así lo llama la función formatearProducto del backend
+            p.title && p.title.toLowerCase().includes(term)
+        );
+
+        return filtered;
+    } catch (error) {
+        console.error("Error en productService (searchProductsByName):", error);
+        return [];
+    }
+};
