@@ -68,13 +68,28 @@ export default function SearchBar() {
           gap: 1,
           height: '44px',
           padding: theme.spacing(0, 2.5),
-          bgcolor: theme.palette.background.paper,
+
+          // --- AQUÍ ESTÁ LA SOLUCIÓN ---
+          bgcolor: theme.palette.mode === 'dark'
+            ? 'rgba(255, 255, 255, 0.08)' // Un gris translúcido muy elegante para que resalte
+            : theme.palette.background.paper, // En light mode mantiene el blanco puro
+
+          border: '1px solid',
+          borderColor: theme.palette.mode === 'dark'
+            ? 'rgba(255, 255, 255, 0.15)' // Un borde sutil para enmarcarlo en modo oscuro
+            : 'transparent', // En modo claro se oculta el borde
+          // -----------------------------
+
           color: theme.palette.text.primary,
           borderRadius: `${theme.shape.borderRadius * 8}px`,
           boxShadow: theme.shadows[0],
-          transition: theme.transitions.create(['background-color', 'box-shadow', 'border-radius']),
+          transition: theme.transitions.create(['background-color', 'box-shadow', 'border-radius', 'border-color']),
+
           '&:hover': {
             boxShadow: theme.shadows[2],
+            bgcolor: theme.palette.mode === 'dark'
+              ? 'rgba(255, 255, 255, 0.12)' // Se aclara un poquitito más al pasar el mouse (feedback visual)
+              : theme.palette.background.paper,
           },
           ...(isOpen && {
             borderBottomLeftRadius: 0,

@@ -6,6 +6,7 @@ import GenericMenu from "../menus";
 import ElevationScroll from "./elevationScroll";
 import ThemeToggler from "../themeToggler";
 import BottomNav from "./bottomNavigation";
+import { useCartStore } from "../../hooks/servicesStore"
 import { KeyboardArrowDownIcon } from "../../shared/icons";
 import { AVATAR_OPTIONS, CATEGORIES_OPTIONS, socialNetworks } from "./navBarConstants";
 
@@ -16,6 +17,9 @@ export default function Navbar() {
 
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('sm'));
+
+  const cart = useCartStore((state) => state.cart);
+  const totalItems = cart.length;
 
   const navigate = useNavigate();
 
@@ -58,7 +62,7 @@ export default function Navbar() {
                   open={Boolean(anchorCat)}
                   onClose={() => setAnchorCat(null)}
                   items={CATEGORIES_OPTIONS}
-                  onItemClick={(item) => navigate(`/category/${item.text.toLowerCase()}`)}
+                  onItemClick={(item) => navigate(item.url)}
                 />
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -68,7 +72,7 @@ export default function Navbar() {
                 {isDesktop ? (
                   <>
                     <IconButton color="inherit" onClick={(e) => setAnchorAvatar(e.currentTarget)}>
-                      <Badge badgeContent={8} color="error">
+                      <Badge badgeContent={totalItems} color="error">
                         <Avatar src="..." />
                       </Badge>
                     </IconButton>
@@ -77,6 +81,8 @@ export default function Navbar() {
                       open={Boolean(anchorAvatar)}
                       onClose={() => setAnchorAvatar(null)}
                       items={AVATAR_OPTIONS}
+
+                      onItemClick={(item) => navigate(item.url)}
                     />
                   </>
                 ) : (

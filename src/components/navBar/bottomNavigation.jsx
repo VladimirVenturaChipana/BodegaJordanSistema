@@ -16,7 +16,7 @@ export default function BottomNav({ value, onChange }) {
         >
             <BottomNavigation showLabels value={value} onChange={onChange}>
                 <BottomNavigationAction label="Inicio" href="/" icon={<HomeIcon />} />
-                <BottomNavigationAction label="Carrito" href="/profile" icon={<ShoppingCartIcon />} />
+                <BottomNavigationAction label="Carrito" href="/checkout" icon={<ShoppingCartIcon />} />
                 <BottomNavigationAction label="Compras" href="/profile" icon={<LocalMallIcon />} />
             </BottomNavigation>
         </Paper>

@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material/styles';
 
 // Estos son tus colores base. Sustituye los strings por los de Figma
 const primaryColor = '#9D001B'; // <-- Pega aquí el color principal de Figma
-const secondaryColor = '#F2B90F'; // <-- Pega aquí el color secundario de Figma
+const secondaryColor = '#cc9b08ff'; // <-- Pega aquí el color secundario de Figma
 
 const themeOptions = {
     palette: {

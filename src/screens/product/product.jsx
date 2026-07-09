@@ -48,7 +48,10 @@ export default function Product() {
 
   return (
     <MainLayout>
-      <Box sx={{ display: 'flex', justifyContent: 'center', px: { xs: 2, md: 4 }, py: { xs: 2, md: 4 } }}>
+
+      <Box sx={{
+        display: 'flex', justifyContent: 'center', px: { xs: 2, md: 4 }, py: { xs: 2, md: 4 },
+      }}>
         <Grid container spacing={4} sx={{ maxWidth: 900, width: '100%', alignItems: 'center' }}>
           <ProductImage src={product.image} title={product.title} />
           <ProductInfo product={product} />

@@ -1,11 +1,18 @@
 import { useState } from 'react'
-import { Box, Typography, Button, Rating, Grid } from "@mui/material";
+// 1. Agregamos Snackbar y Alert a las importaciones de MUI
+import { Box, Typography, Button, Rating, Grid, Snackbar, Alert } from "@mui/material";
 import NumberField from "../../components/numberField";
+import { useCartStore } from "../../hooks/servicesStore";
 
 export default function ProductInfo({ product }) {
 
+  const addToCart = useCartStore((state) => state.addToCart);
+
   const [review, setReview] = useState(2);
   const [quantity, setQuantity] = useState(1);
+
+  // 2. Creamos un estado para controlar si el Snackbar está abierto
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const hasDiscount = product.discount != null && Number(product.discount) > 0;
   const finalPrice = hasDiscount
@@ -13,6 +20,20 @@ export default function ProductInfo({ product }) {
     : Number(product.price).toFixed(2);
 
   const hasCodbar = product.codbar != null;
+
+  const handleAddToCart = () => {
+    addToCart({ ...product, finalPrice }, quantity);
+    // 3. Activamos el Snackbar al hacer clic
+    setSnackbarOpen(true);
+  };
+
+  // 4. Función para cerrar el Snackbar después de unos segundos
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return; // Evita que se cierre si el usuario hace clic en otro lado de la pantalla por error
+    }
+    setSnackbarOpen(false);
+  };
 
   return (
     <Grid size={{ xs: 12, sm: 6 }} sx={{ px: { xs: 4, sm: 0 } }}>
@@ -84,7 +105,7 @@ export default function ProductInfo({ product }) {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => console.log(`Añadiendo ${quantity} unidades de ${product.title} al carrito.`)}
+          onClick={handleAddToCart}
           sx={{
             flexGrow: 1,
             maxWidth: 220,
@@ -94,6 +115,23 @@ export default function ProductInfo({ product }) {
           AGREGAR
         </Button>
       </Box>
+
+      {/* 5. Agregamos el componente Snackbar al final */}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000} // Se cerrará solito en 3 segundos (3000 ms)
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} // Aparecerá centrado abajo
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity="success"
+          variant="filled" // Le da un color sólido muy bonito
+          sx={{ width: '100%' }}
+        >
+          ¡Agregaste {quantity} {quantity === 1 ? 'unidad' : 'unidades'} de {product.title} al carrito!
+        </Alert>
+      </Snackbar>
     </Grid>
   )
 }
