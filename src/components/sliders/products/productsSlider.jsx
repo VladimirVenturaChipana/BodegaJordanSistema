@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import { Box, Typography, Container, useTheme } from '@mui/material';
-import MediaCard from '../../cardProduct';
+import MediaCard from '../../cardProduct/cardProduct';
 
 export default function SliderProducts({
   highlightTitle = "LICORES",

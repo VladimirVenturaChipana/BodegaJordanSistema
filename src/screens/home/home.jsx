@@ -1,26 +1,35 @@
+// (React, MUI)
 import { useState, useEffect } from 'react';
 import { Box } from "@mui/material";
-import { HOME_SECTIONS } from './homeConstants';
+
+// Componentes 
 import MainLayout from '../../layouts/mainLayout';
 import PromotionSlider from '../../components/sliders/promotion/promotionSlider';
 import SliderProducts from '../../components/sliders/products/productsSlider';
 import CategoryGrid from '../../components/grids/categoryGrid';
+
+// Logica y constantes
+import { HOME_SECTIONS } from './homeConstants';
 import { getProductsByCategory } from '../../hooks/API/servicesProducts';
 
 export default function Home() {
   const [categoriesData, setCategoriesData] = useState({});
 
   useEffect(() => {
-    const requests = HOME_SECTIONS.map(section => getProductsByCategory(section.id));
-    Promise.all(requests)
-      .then(results => {
+    const loadData = async () => {
+      try {
+        const requests = HOME_SECTIONS.map(section => getProductsByCategory(section.id));
+        const results = await Promise.all(requests);
         const dataMap = {};
         HOME_SECTIONS.forEach((section, index) => {
           dataMap[section.id] = results[index];
         });
         setCategoriesData(dataMap);
-      })
-      .catch(err => console.error("Error general cargando las categorías del Home:", err));
+      } catch (err) {
+        console.error("Error general cargando las categorías del Home:", err);
+      }
+    };
+    loadData();
   }, []);
 
   return (

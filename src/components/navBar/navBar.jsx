@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Button, Box, IconButton, Badge, Avatar, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  AppBar, Toolbar, Button, Box, IconButton,
+  Badge, Avatar, Typography, useMediaQuery, useTheme
+} from "@mui/material";
 import { useNavigate } from 'react-router-dom';
-import SearchBar from "../searchBar";
+import SearchBar from "../searchBar/searchBar";
 import GenericMenu from "../menus";
 import ElevationScroll from "./elevationScroll";
 import ThemeToggler from "../themeToggler";

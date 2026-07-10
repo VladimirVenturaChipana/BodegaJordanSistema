@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Box, Paper, Typography, Container } from '@mui/material';
-
-const API_URL = import.meta.env.VITE_API_URL;
+import { getCategories } from '../../hooks/API/servicesCategories';
 
 export default function CategoryGrid() {
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/productos/categorias`)
-      .then(res => res.json())
+    getCategories()
       .then(data => setCategorias(data))
       .catch(err => console.error("Error cargando categorías:", err));
   }, []);
@@ -56,8 +54,8 @@ export default function CategoryGrid() {
               sx={{
                 aspectRatio: '1/1',
                 width: '100%',
-                maxWidth: { xs: 140, sm: '100%' },
-                borderRadius: 3,
+                maxWidth: { xs: 130, sm: '80%' },
+                borderRadius: 100,
                 overflow: 'hidden',
                 cursor: 'pointer',
                 transition: 'transform 0.2s ease-in-out',

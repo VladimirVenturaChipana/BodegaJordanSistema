@@ -34,7 +34,7 @@ export const getProductsByCategory = async (categoryId) => {
         return await res.json();
     } catch (error) {
         console.error(`Error en productService (getProductsByCategory) para ID ${categoryId}:`, error);
-        return []; // Devolvemos un array vacío para evitar que la app explote si falla una categoría
+        return [];
     }
 };
 
@@ -63,21 +63,18 @@ export const getProductsByBrand = async (brandId) => {
  */
 export const getCategoryProductsByName = async (categoryName) => {
     try {
-        // 1. Obtener la lista de categorías
         const resCat = await fetch(`${API_URL}/api/productos/categorias`);
         if (!resCat.ok) {
             throw new Error("Error al obtener la lista de categorías");
         }
         const categories = await resCat.json();
 
-        // 2. Buscar la categoría por nombre (caso insensible)
         const found = categories.find(c => c.deslin.toLowerCase() === categoryName.toLowerCase());
         if (!found) {
             console.warn(`Categoría no encontrada para el nombre: ${categoryName}`);
             return [];
         }
 
-        // 3. Obtener productos por el ID de la categoría encontrada
         return await getProductsByCategory(found.idcategoria);
     } catch (error) {
         console.error(`Error en getCategoryProductsByName para "${categoryName}":`, error);
@@ -92,7 +89,6 @@ export const getCategoryProductsByName = async (categoryName) => {
  */
 export const searchProductsByName = async (searchTerm) => {
     try {
-        // Usamos la ruta que SÍ existe en el backend de tu compañera
         const res = await fetch(`${API_URL}/api/productos`);
 
         if (!res.ok) {
@@ -101,10 +97,8 @@ export const searchProductsByName = async (searchTerm) => {
 
         const allProducts = await res.json();
 
-        // Filtramos en el frontend
         const term = searchTerm.toLowerCase();
         const filtered = allProducts.filter(p =>
-            // OJO: Usamos p.title porque así lo llama la función formatearProducto del backend
             p.title && p.title.toLowerCase().includes(term)
         );
 

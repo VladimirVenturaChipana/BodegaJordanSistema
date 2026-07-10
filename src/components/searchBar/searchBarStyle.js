@@ -1,0 +1,25 @@
+export const searchContainerStyles = (theme, isOpen) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: 1,
+  height: '44px',
+  padding: theme.spacing(0, 2.5),
+  bgcolor: theme.palette.background.default,
+  border: '1px solid',
+  borderColor: theme.palette.divider,
+  color: theme.palette.text.primary,
+  borderRadius: `${theme.shape.borderRadius * 8}px`,
+  boxShadow: theme.shadows[0],
+  transition: theme.transitions.create(['background-color', 'box-shadow', 'border-radius', 'border-color']),
+  '&:hover': {
+    boxShadow: theme.shadows[2],
+    bgcolor: theme.palette.background.paper,
+  },
+  ...(isOpen && {
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    boxShadow: theme.shadows[2],
+  }),
+});
