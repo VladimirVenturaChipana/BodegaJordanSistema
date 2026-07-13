@@ -16,14 +16,14 @@ export const CATEGORIES_OPTIONS = [
 ];
 
 export const socialNetworks = [
-    { name: "Facebook", url: "https://facebook.com", icon: Icons.FacebookIcon },
+    { name: "Facebook", url: "https://www.facebook.com/JCEV.TITO?locale=es_LA", icon: Icons.FacebookIcon },
     { name: "Instagram", url: "https://instagram.com", icon: Icons.InstagramIcon },
-    { name: "TikTok", url: "https://tiktok.com", icon: Icons.TiktokIcon },
+    { name: "TikTok", url: "https://www.tiktok.com/@minimarket_jordan", icon: Icons.TiktokIcon },
 ];
 
 export const menuItems = [
-    { text: "Inicio", icon: Icons.HomeIcon },
-    { text: "Registrar Empleados", icon: Icons.PeopleIcon },
-    { text: "Ver Delivery Activos", icon: Icons.LocalShippingIcon },
-    { text: "Agregar al Catálogo", icon: Icons.AddCircleIcon },
+    { text: "Inicio", icon: Icons.HomeIcon, url: "/dashboard" },
+    { text: "Registrar Empleados", icon: Icons.PeopleIcon, url: "/registerEmployee" },
+    { text: "Ver Delivery Activos", icon: Icons.LocalShippingIcon, url: "/activeDeliveries" },
+    { text: "Agregar al Catálogo", icon: Icons.AddCircleIcon, url: "/addCatalog" },
 ];

@@ -3,24 +3,56 @@ import { Box, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText
 import { socialNetworks, menuItems } from "../../components/navBar/navBarConstants";
 import NavBarAdmin from "../../components/navBar/navBarAdmin";
 
+import AddCatalog from './addCatalog'
+import ActiveDeliveries from './activeDeliveries'
+import RegisterEmployee from './registerEmloyee'
+
 const drawerWidth = 250;
 
 export default function Dashboard() {
-  const [open, setOpen] = useState(false); // Empieza cerrado en móvil
+  const [open, setOpen] = useState(false);
+  // 1. Nuevo estado para controlar la pestaña activa
+  const [activeTab, setActiveTab] = useState("Inicio");
+
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
   const toggleDrawer = () => setOpen(!open);
+
+  // 2. Función para renderizar el contenido dinámicamente según la pestaña
+  const renderContent = () => {
+    switch (activeTab) {
+      case "Inicio":
+        return (
+          <Grid item xs={12} md={4}>
+            {/* Mensaje original de tu código */}
+            <Paper sx={{ p: 4 }}>Bienvenido al Panel Admin, Bodega Jordan.</Paper>
+          </Grid>
+        );
+      case "Registrar Empleados":
+        // Retorna el componente de tu módulo correspondiente
+        return <RegisterEmployee />;
+      case "Ver Delivery Activos":
+        return <ActiveDeliveries />;
+      case "Agregar al Catálogo":
+        return <AddCatalog />;
+      default:
+        return (
+          <Grid item xs={12} md={4}>
+            <Paper sx={{ p: 4 }}>Bienvenido al Panel Admin, Bodega Jordan.</Paper>
+          </Grid>
+        );
+    }
+  };
 
   return (
     <Box sx={{ display: 'flex' }}>
       <NavBarAdmin toggleDrawer={toggleDrawer} />
 
       <Drawer
-        // Si es escritorio, es 'persistent', si es móvil es 'temporary' (flotante)
         variant={isDesktop ? "persistent" : "temporary"}
-        open={isDesktop ? true : open} // En escritorio siempre abierto, en móvil depende del state
-        onClose={() => setOpen(false)} // Cierra al hacer clic fuera en móvil
+        open={isDesktop ? true : open}
+        onClose={() => setOpen(false)}
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -32,13 +64,18 @@ export default function Dashboard() {
           <List>
             {menuItems.map((item) => (
               <ListItem key={item.text} disablePadding>
-                <ListItemButton>
+                {/* 3. Actualizar el estado al hacer clic y marcarlo visualmente como seleccionado */}
+                <ListItemButton
+                  selected={activeTab === item.text}
+                  onClick={() => setActiveTab(item.text)}
+                >
                   <ListItemIcon><item.icon /></ListItemIcon>
                   <ListItemText primary={item.text} />
                 </ListItemButton>
               </ListItem>
             ))}
           </List>
+
           <Box sx={{ marginTop: 'auto', p: 3, display: 'flex', justifyContent: 'center', gap: 2 }}>
             {socialNetworks.map((network) => (
               <IconButton key={network.name} target="_blank" href={network.url}>
@@ -52,9 +89,8 @@ export default function Dashboard() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
         <Grid container spacing={3}>
-          <Grid item xs={12} md={4}>
-            <Paper sx={{ p: 4 }}>Bienvenido al Panel Admin, Bodega Jordan.</Paper>
-          </Grid>
+          {/* 4. Llamar a la función que renderiza el contenido dinámico */}
+          {renderContent()}
         </Grid>
       </Box>
     </Box>
