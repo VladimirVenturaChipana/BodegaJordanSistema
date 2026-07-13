@@ -9,7 +9,7 @@ import GenericMenu from "../menus";
 import ElevationScroll from "./elevationScroll";
 import ThemeToggler from "../themeToggler";
 import BottomNav from "./bottomNavigation";
-import LoginModal from '../../screens/login/loginModal'; // ¡A la cancha!
+import LoginModal from '../../screens/customers/login/loginModal';
 import { useCartStore, useAuthStore } from "../../hooks/servicesStore";
 import { KeyboardArrowDownIcon } from "../../shared/icons";
 // Cambiamos AVATAR_OPTIONS por getAvatarOptions

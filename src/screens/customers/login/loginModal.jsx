@@ -3,8 +3,8 @@ import { Dialog, DialogContent, Typography, IconButton, Grid, Slide } from '@mui
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
-import Logo from '../../assets/LogoBodegaJordan.png';
-import LoginForm from '../../components/forms/loginForm';
+import Logo from '../../../assets/LogoBodegaJordan.png';
+import LoginForm from '../../../components/forms/loginForm';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;

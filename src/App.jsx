@@ -5,12 +5,12 @@ import { lightTheme, darkTheme } from './assets/theme';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeContext } from './shared/themeContext';
-import Home from './screens/home/home';
-import Category from './screens/category';
-import Product from './screens/product/product';
-import Profile from './screens/profile';
-import CheckOut from './screens/checkout';
-import RegisterCustomer from './screens/register/register';
+import Home from './screens/customers/home/home';
+import Category from './screens/customers/category';
+import Product from './screens/customers/product/product';
+import Profile from './screens/customers/profile';
+import CheckOut from './screens/customers/checkout';
+import RegisterCustomer from './screens/customers/register/register';
 
 import './App.css';
 

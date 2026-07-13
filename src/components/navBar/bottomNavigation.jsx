@@ -2,7 +2,7 @@ import { Paper, BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { useState } from "react";
 import { HomeIcon, ShoppingCartIcon, LocalMallIcon } from "../../shared/icons";
 import { useAuthStore } from "../../hooks/servicesStore";
-import LoginModal from '../../screens/login/loginModal'
+import LoginModal from '../../screens/customers/login/loginModal'
 
 export default function BottomNav({ value, onChange }) {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);

@@ -1,4 +1,4 @@
-import { ShoppingCartIcon, CreditCardIcon, LocalShippingIcon } from '../../shared/icons';
+import { ShoppingCartIcon, CreditCardIcon, LocalShippingIcon } from '../../../shared/icons';
 
 export const PASOS_ICONOS = [
     {

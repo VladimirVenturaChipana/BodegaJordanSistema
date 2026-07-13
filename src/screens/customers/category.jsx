@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Grid, Typography, Box, Pagination, CircularProgress } from "@mui/material";
-import MainLayout from "../layouts/mainLayout";
-import SidebarFiltros from "../components/sideBarFilters";
-import MediaCard from "../components/cardProduct/cardProduct";
-import { getCategoryProductsByName } from "../hooks/API/servicesProducts";
+import MainLayout from "../../layouts/mainLayout";
+import SidebarFiltros from "../../components/sideBarFilters";
+import MediaCard from "../../components/cardProduct/cardProduct";
+import { getCategoryProductsByName } from "../../hooks/API/servicesProducts";
 
 export default function Category() {
   const { categoryName } = useParams();

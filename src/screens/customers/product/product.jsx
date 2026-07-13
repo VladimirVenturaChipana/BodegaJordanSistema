@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
 
-import { getProductById, getProductsByCategory, getProductsByBrand } from "../../hooks/API/servicesProducts";
+import { getProductById, getProductsByCategory, getProductsByBrand } from "../../../hooks/API/servicesProducts";
 
 import ProductImage from "./productImage";
 import ProductInfo from "./productInfo";
-import SliderProducts from "../../components/sliders/products/productsSlider";
-import MainLayout from "../../layouts/mainLayout";
+import SliderProducts from "../../../components/sliders/products/productsSlider";
+import MainLayout from "../../../layouts/mainLayout";
 
 export default function Product() {
   const { id } = useParams();

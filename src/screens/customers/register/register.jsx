@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Box, Typography, Link, Grid } from "@mui/material";
 import { PASOS_ICONOS } from './registerConstants';
 import LoginModal from '../login/loginModal';
-import MainLayout from '../../layouts/mainLayout';
+import MainLayout from '../../../layouts/mainLayout';
 import StepIcon from './registerSteps';
-import RegisterForm from '../../components/forms/registerForm';
+import RegisterForm from '../../../components/forms/registerForm';
 
 export default function RegisterCustomer() {
   const [showPassword, setShowPassword] = useState(false);

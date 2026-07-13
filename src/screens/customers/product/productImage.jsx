@@ -1,5 +1,5 @@
 import { Box, Grid, IconButton } from '@mui/material';
-import { FavoriteBorderIcon } from '../../shared/icons';
+import { FavoriteBorderIcon } from '../../../shared/icons';
 
 export default function ProductImage({ src, title }) {
   return <Grid size={{ xs: 12, sm: 6 }} sx={{ position: 'relative' }}>

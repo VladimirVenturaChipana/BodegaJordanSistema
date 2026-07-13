@@ -1,8 +1,8 @@
 import React from 'react';
-import MainLayout from "../layouts/mainLayout";
+import MainLayout from "../../layouts/mainLayout";
 import { Box, Grid, Typography, Checkbox, Button, Paper, Divider } from "@mui/material";
-import { useCartStore } from "../hooks/servicesStore";
-import NumberField from '../components/numberField';
+import { useCartStore } from "../../hooks/servicesStore";
+import NumberField from '../../components/numberField';
 
 export default function CheckOut() {
   // Consumimos el estado y las funciones de la store de Zustand

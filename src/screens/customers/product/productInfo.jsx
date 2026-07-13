@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Box, Typography, Button, Rating, Grid, Snackbar, Alert } from "@mui/material";
-import NumberField from "../../components/numberField";
-import { useCartStore, useAuthStore } from "../../hooks/servicesStore";
+import NumberField from "../../../components/numberField";
+import { useCartStore, useAuthStore } from "../../../hooks/servicesStore";
 
-import LoginModal from '../../screens/login/loginModal';
+import LoginModal from '../login/loginModal';
 
 export default function ProductInfo({ product }) {
 
