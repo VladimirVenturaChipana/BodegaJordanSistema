@@ -29,7 +29,7 @@ export default function LoginModal({ open, handleClose }) {
           <IconButton onClick={handleClose} sx={{ position: 'absolute', right: 16, top: 16, color: 'text.secondary' }}>
             <CloseIcon />
           </IconButton>
-          <Grid container spacing={1} sx={{ width: '100%', px: { xs: 4, sm: 0 } }}>
+          <Grid container spacing={1} sx={{ width: '100%', px: { xs: 2, sm: 0 } }}>
             {/* Logo y Título */}
             <Grid size={12} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <img src={Logo} alt="Logo Bodega Jordan" style={{ width: '160px', height: '160px' }} />
