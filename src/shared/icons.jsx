@@ -29,6 +29,8 @@ export { default as PersonIcon } from '@mui/icons-material/Person';
 export { default as RemoveIcon } from '@mui/icons-material/Remove';
 export { default as SearchIcon } from '@mui/icons-material/Search';
 export { default as ShoppingCartIcon } from '@mui/icons-material/ShoppingCart';
+export { default as VisibilityIcon } from '@mui/icons-material/Visibility';
+export { default as VisibilityOffIcon } from '@mui/icons-material/VisibilityOff';
 
 export const BottleIcon = (props) => <SvgIcon {...props}>
   <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" viewBox="0 0 453 453" xmlSpace="preserve">

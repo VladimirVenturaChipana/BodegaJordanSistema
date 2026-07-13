@@ -10,6 +10,7 @@ import Category from './screens/category';
 import Product from './screens/product/product';
 import Profile from './screens/profile';
 import CheckOut from './screens/checkout';
+import RegisterCustomer from './screens/register';
 
 import './App.css';
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/product/:id" element={<Product />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/checkout" element={<CheckOut />} />
+            <Route path="/registerCustomer" element={<RegisterCustomer />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

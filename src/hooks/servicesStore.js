@@ -1,5 +1,14 @@
 import { create } from 'zustand';
 
+// Este store controlará si el usuario inició sesión
+export const useAuthStore = create((set) => ({
+  isAuthenticated: false, // Por defecto, nadie está logueado
+  user: null,
+  login: (userData) => set({ isAuthenticated: true, user: userData }),
+  logout: () => set({ isAuthenticated: false, user: null }),
+}));
+
+
 export const useCartStore = create((set, get) => ({
   cart: [],
 

@@ -1,10 +1,10 @@
 import * as Icons from "../../shared/icons";
 
-export const AVATAR_OPTIONS = [
-    { text: "Iniciar sesión", icon: Icons.LoginIcon, url: "/login" },
-    { text: "Perfil", icon: Icons.PersonIcon, url: "/profile" },
-    { text: "Mi carrito", icon: Icons.ShoppingCartIcon, url: "/checkout" },
-    { text: "Mis compras", icon: Icons.LocalMallIcon, url: "/orders" },
+export const getAvatarOptions = (onLoginClick) => [
+    { text: "Iniciar sesión", icon: Icons.LoginIcon, action: onLoginClick },
+    { text: "Perfil", icon: Icons.PersonIcon, url: "/profile", requiresAuth: true },
+    { text: "Mi carrito", icon: Icons.ShoppingCartIcon, url: "/checkout", requiresAuth: true },
+    { text: "Mis compras", icon: Icons.LocalMallIcon, url: "/orders", requiresAuth: true },
 ];
 
 export const CATEGORIES_OPTIONS = [
@@ -16,7 +16,7 @@ export const CATEGORIES_OPTIONS = [
 ];
 
 export const socialNetworks = [
-    { name: "Facebook", url: "https://www.figma.com/design/zSk6Dc5rFClqcCXtPfqt6j/Mockup?node-id=0-1&p=f&t=oz1FcPPcB34axz94-0", icon: Icons.FacebookIcon },
-    { name: "Instagram", url: "https://www.figma.com/design/zSk6Dc5rFClqcCXtPfqt6j/Mockup?node-id=0-1&p=f&t=oz1FcPPcB34axz94-0", icon: Icons.InstagramIcon },
-    { name: "TikTok", url: "https://www.figma.com/design/zSk6Dc5rFClqcCXtPfqt6j/Mockup?node-id=0-1&p=f&t=oz1FcPPcB34axz94-0", icon: Icons.TiktokIcon },
-]
+    { name: "Facebook", url: "https://facebook.com", icon: Icons.FacebookIcon },
+    { name: "Instagram", url: "https://instagram.com", icon: Icons.InstagramIcon },
+    { name: "TikTok", url: "https://tiktok.com", icon: Icons.TiktokIcon },
+];
