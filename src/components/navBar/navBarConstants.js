@@ -20,3 +20,10 @@ export const socialNetworks = [
     { name: "Instagram", url: "https://instagram.com", icon: Icons.InstagramIcon },
     { name: "TikTok", url: "https://tiktok.com", icon: Icons.TiktokIcon },
 ];
+
+export const menuItems = [
+    { text: "Inicio", icon: Icons.HomeIcon },
+    { text: "Registrar Empleados", icon: Icons.PeopleIcon },
+    { text: "Ver Delivery Activos", icon: Icons.LocalShippingIcon },
+    { text: "Agregar al Catálogo", icon: Icons.AddCircleIcon },
+];

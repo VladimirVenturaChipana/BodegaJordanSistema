@@ -2,6 +2,7 @@ import { SvgIcon } from "@mui/material";
 
 // Importaciones estándar de MUI (sin llaves)
 export { default as AddIcon } from '@mui/icons-material/Add';
+export { default as AddCircleIcon } from '@mui/icons-material/AddCircle';
 export { default as AddShoppingCartIcon } from '@mui/icons-material/AddShoppingCart';
 export { default as ArrowBackIcon } from '@mui/icons-material/ArrowBack';
 export { default as CalendarTodayIcon } from '@mui/icons-material/CalendarToday';
@@ -28,6 +29,7 @@ export { default as LoginIcon } from '@mui/icons-material/Login';
 export { default as LogoutIcon } from '@mui/icons-material/Logout';
 export { default as MenuIcon } from '@mui/icons-material/Menu';
 export { default as PersonIcon } from '@mui/icons-material/Person';
+export { default as PeopleIcon } from '@mui/icons-material/People';
 export { default as RemoveIcon } from '@mui/icons-material/Remove';
 export { default as SearchIcon } from '@mui/icons-material/Search';
 export { default as ShoppingCartIcon } from '@mui/icons-material/ShoppingCart';

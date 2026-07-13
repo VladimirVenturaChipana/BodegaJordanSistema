@@ -11,6 +11,7 @@ import Product from './screens/customers/product/product';
 import Profile from './screens/customers/profile';
 import CheckOut from './screens/customers/checkout';
 import RegisterCustomer from './screens/customers/register/register';
+import Dashboard from './screens/admin/dashboard';
 
 import './App.css';
 
@@ -28,7 +29,7 @@ function App() {
         <CssBaseline />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Dashboard />} />
             <Route path="/category/:categoryName" element={<Category />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/profile" element={<Profile />} />
