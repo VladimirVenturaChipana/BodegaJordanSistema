@@ -16,11 +16,12 @@ export default function PromotionSlider() {
   return (
     <Box
       sx={{
-        bgcolor: 'ActiveText',
+        // Quitamos el bgcolor: 'ActiveText' para evitar el fondo azul en los bordes
+        bgcolor: 'transparent',
         width: '100%',
-        aspectRatio: { xs: '16/9', sm: '3/1', lg: '3/1' },
-        minHeight: { xs: '250px', sm: '350px', lg: '400px' },
-        maxHeight: { lg: '450px' },
+        // Ajustamos las proporciones asumiendo que tus imágenes son casi cuadradas
+        // xs = 1 imagen (cuadrada), sm = 2 imágenes juntas, lg = 3 imágenes juntas
+        aspectRatio: { xs: '1/1', sm: '2/1', lg: '3/1' },
         overflow: 'hidden',
         '& .swiper-pagination': {
           bottom: '10px',
@@ -32,8 +33,11 @@ export default function PromotionSlider() {
       }}
     >
       <Swiper
+        style={{ width: '100%', height: '100%' }}
         speed={1000}
         loop={true}
+        // Aseguramos que no haya espacio extra no deseado entre slides
+        spaceBetween={0}
         modules={[Navigation, Autoplay, Pagination]}
         effect='slide'
         navigation
@@ -68,6 +72,7 @@ export default function PromotionSlider() {
               style={{
                 width: '100%',
                 height: '100%',
+                // Volvemos a cover, pero ahora el contenedor respeta la forma de tu imagen
                 objectFit: "cover",
                 objectPosition: "center center"
               }}
@@ -76,6 +81,5 @@ export default function PromotionSlider() {
         ))}
       </Swiper>
     </Box>
-
   );
 };

@@ -10,7 +10,7 @@ import Category from './screens/category';
 import Product from './screens/product/product';
 import Profile from './screens/profile';
 import CheckOut from './screens/checkout';
-import RegisterCustomer from './screens/register';
+import RegisterCustomer from './screens/register/register';
 
 import './App.css';
 

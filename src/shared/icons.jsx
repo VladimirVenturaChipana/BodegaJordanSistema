@@ -8,6 +8,7 @@ export { default as CalendarTodayIcon } from '@mui/icons-material/CalendarToday'
 export { default as ChevronLeftIcon } from '@mui/icons-material/ChevronLeft';
 export { default as ChevronRightIcon } from '@mui/icons-material/ChevronRight';
 export { default as CloseIcon } from '@mui/icons-material/Close';
+export { default as CreditCardIcon } from '@mui/icons-material/CreditCard';
 export { default as DateRangeIcon } from '@mui/icons-material/DateRange';
 export { default as FacebookIcon } from '@mui/icons-material/Facebook';
 export { default as FavoriteBorderIcon } from '@mui/icons-material/FavoriteBorder';
@@ -22,6 +23,7 @@ export { default as KeyboardArrowUpIcon } from '@mui/icons-material/KeyboardArro
 export { default as LiquorIcon } from '@mui/icons-material/Liquor';
 export { default as ListIcon } from '@mui/icons-material/List';
 export { default as LocalMallIcon } from '@mui/icons-material/LocalMall';
+export { default as LocalShippingIcon } from '@mui/icons-material/LocalShipping';
 export { default as LoginIcon } from '@mui/icons-material/Login';
 export { default as LogoutIcon } from '@mui/icons-material/Logout';
 export { default as MenuIcon } from '@mui/icons-material/Menu';
