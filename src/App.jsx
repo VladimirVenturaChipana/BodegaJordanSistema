@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useAuthStore } from './hooks/servicesStore';
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AuthCallback from './screens/auth/callback';
 
 import Confirmation from './screens/customers/confirmation/confirmation';
 import { lightTheme, darkTheme } from './assets/theme';
@@ -39,6 +40,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
             <Route path="/category/:categoryName" element={<Category />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/profile" element={<Profile />} />
