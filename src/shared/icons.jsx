@@ -2,12 +2,14 @@ import { SvgIcon } from "@mui/material";
 
 // Importaciones estándar de MUI (sin llaves)
 export { default as AddIcon } from '@mui/icons-material/Add';
+export { default as AddCircleIcon } from '@mui/icons-material/AddCircle';
 export { default as AddShoppingCartIcon } from '@mui/icons-material/AddShoppingCart';
 export { default as ArrowBackIcon } from '@mui/icons-material/ArrowBack';
 export { default as CalendarTodayIcon } from '@mui/icons-material/CalendarToday';
 export { default as ChevronLeftIcon } from '@mui/icons-material/ChevronLeft';
 export { default as ChevronRightIcon } from '@mui/icons-material/ChevronRight';
 export { default as CloseIcon } from '@mui/icons-material/Close';
+export { default as CreditCardIcon } from '@mui/icons-material/CreditCard';
 export { default as DateRangeIcon } from '@mui/icons-material/DateRange';
 export { default as FacebookIcon } from '@mui/icons-material/Facebook';
 export { default as FavoriteBorderIcon } from '@mui/icons-material/FavoriteBorder';
@@ -22,13 +24,17 @@ export { default as KeyboardArrowUpIcon } from '@mui/icons-material/KeyboardArro
 export { default as LiquorIcon } from '@mui/icons-material/Liquor';
 export { default as ListIcon } from '@mui/icons-material/List';
 export { default as LocalMallIcon } from '@mui/icons-material/LocalMall';
+export { default as LocalShippingIcon } from '@mui/icons-material/LocalShipping';
 export { default as LoginIcon } from '@mui/icons-material/Login';
 export { default as LogoutIcon } from '@mui/icons-material/Logout';
 export { default as MenuIcon } from '@mui/icons-material/Menu';
 export { default as PersonIcon } from '@mui/icons-material/Person';
+export { default as PeopleIcon } from '@mui/icons-material/People';
 export { default as RemoveIcon } from '@mui/icons-material/Remove';
 export { default as SearchIcon } from '@mui/icons-material/Search';
 export { default as ShoppingCartIcon } from '@mui/icons-material/ShoppingCart';
+export { default as VisibilityIcon } from '@mui/icons-material/Visibility';
+export { default as VisibilityOffIcon } from '@mui/icons-material/VisibilityOff';
 
 export const BottleIcon = (props) => <SvgIcon {...props}>
   <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" viewBox="0 0 453 453" xmlSpace="preserve">

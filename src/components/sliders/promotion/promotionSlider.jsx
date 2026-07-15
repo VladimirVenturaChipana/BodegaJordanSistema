@@ -29,11 +29,12 @@ useEffect(() => {
   return (
     <Box
       sx={{
-        bgcolor: 'ActiveText',
+        // Quitamos el bgcolor: 'ActiveText' para evitar el fondo azul en los bordes
+        bgcolor: 'transparent',
         width: '100%',
-        aspectRatio: { xs: '16/9', sm: '3/1', lg: '3/1' },
-        minHeight: { xs: '250px', sm: '350px', lg: '400px' },
-        maxHeight: { lg: '450px' },
+        // Ajustamos las proporciones asumiendo que tus imágenes son casi cuadradas
+        // xs = 1 imagen (cuadrada), sm = 2 imágenes juntas, lg = 3 imágenes juntas
+        aspectRatio: { xs: '1/1', sm: '2/1', lg: '3/1' },
         overflow: 'hidden',
         '& .swiper-pagination': {
           bottom: '10px',
@@ -45,6 +46,7 @@ useEffect(() => {
       }}
     >
       <Swiper
+        style={{ width: '100%', height: '100%' }}
         speed={1000}
         loop={banners.length > 3}
         modules={[Navigation, Autoplay, Pagination]}

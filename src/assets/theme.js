@@ -30,7 +30,7 @@ const darkTheme = createTheme({
     mode: 'dark',
     primary: {
       // En modo oscuro, a veces es mejor un tono más claro para el primario
-      main: '#bb0322ff',
+      main: '#e22242ff',
     },
   },
 });

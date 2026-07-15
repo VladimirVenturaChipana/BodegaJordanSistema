@@ -1,18 +1,19 @@
 import { useState } from 'react'
-// 1. Agregamos Snackbar y Alert a las importaciones de MUI
 import { Box, Typography, Button, Rating, Grid, Snackbar, Alert } from "@mui/material";
-import NumberField from "../../components/numberField";
-import { useCartStore } from "../../hooks/servicesStore";
+import NumberField from "../../../components/numberField";
+import { useCartStore, useAuthStore } from "../../../hooks/servicesStore";
+
+import LoginModal from '../login/loginModal';
 
 export default function ProductInfo({ product }) {
 
   const addToCart = useCartStore((state) => state.addToCart);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   const [review, setReview] = useState(2);
   const [quantity, setQuantity] = useState(1);
-
-  // 2. Creamos un estado para controlar si el Snackbar está abierto
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
 
   const hasDiscount = product.discount != null && Number(product.discount) > 0;
   const finalPrice = hasDiscount
@@ -22,6 +23,13 @@ export default function ProductInfo({ product }) {
   const hasCodbar = product.codbar != null;
 
   const handleAddToCart = () => {
+    // LA INTERCEPCIÓN: Si no está logueado, le abrimos el modal y detenemos todo
+    if (!isAuthenticated) {
+      setOpenLogin(true);
+      return;
+    }
+
+    // Si está logueado, el código sigue corriendo felizmente como antes:
     addToCart({ ...product, finalPrice }, quantity);
     // 3. Activamos el Snackbar al hacer clic
     setSnackbarOpen(true);
@@ -132,6 +140,9 @@ export default function ProductInfo({ product }) {
           ¡Agregaste {quantity} {quantity === 1 ? 'unidad' : 'unidades'} de {product.title} al carrito!
         </Alert>
       </Snackbar>
+
+      {/* MODAL INYECTADO: Esperando ser llamado si el usuario da click sin loguearse */}
+      <LoginModal open={openLogin} handleClose={() => setOpenLogin(false)} />
     </Grid>
   )
 }
