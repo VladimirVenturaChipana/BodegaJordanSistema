@@ -73,7 +73,6 @@ export default function Product() {
           isLoading={loadingSliders}
         />
       </Box>
-      <Box sx={{ height: '60px', display: { xs: 'block', sm: 'none' } }} />
     </MainLayout>
   );
 }

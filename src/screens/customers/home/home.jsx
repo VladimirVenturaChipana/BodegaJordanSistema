@@ -50,7 +50,6 @@ export default function Home() {
           isLoading={isLoading}
         />
       ))}
-      <Box sx={{ height: '60px', display: { xs: 'block', sm: 'none' } }} />
     </MainLayout>
   );
 }

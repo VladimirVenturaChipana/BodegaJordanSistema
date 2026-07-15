@@ -1,6 +1,5 @@
 import { Paper, BottomNavigation, BottomNavigationAction, Badge } from "@mui/material";
 import { useState } from "react";
-// 1. Importa useNavigate
 import { useNavigate } from "react-router-dom";
 import { HomeIcon, ShoppingCartIcon, LocalMallIcon } from "../../shared/icons";
 import { useAuthStore } from "../../hooks/servicesStore";
@@ -23,7 +22,6 @@ export default function BottomNav({ value, onChange }) {
     }
   };
 
-  // 2. Inicializa el hook
   const navigate = useNavigate();
 
   return (
@@ -59,7 +57,6 @@ export default function BottomNav({ value, onChange }) {
           icon={<LocalMallIcon />}
         />
       </BottomNavigation>
-
       <LoginModal open={open} handleClose={() => setOpen(false)} />
     </Paper>
   );

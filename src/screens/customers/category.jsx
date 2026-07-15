@@ -162,7 +162,6 @@ export default function Category() {
           </Grid>
         </Grid>
       </Grid>
-      <Box sx={{ height: '80px' }} />
     </MainLayout>
   );
 }
