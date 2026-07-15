@@ -26,4 +26,5 @@ export const menuItems = [
     { text: "Registrar Empleados", icon: Icons.PeopleIcon, url: "/registerEmployee" },
     { text: "Ver Delivery Activos", icon: Icons.LocalShippingIcon, url: "/activeDeliveries" },
     { text: "Agregar al Catálogo", icon: Icons.AddCircleIcon, url: "/addCatalog" },
+    { text: "Agregar opciones", icon: Icons.AddCircleIcon, url: "/addOptions" }
 ];

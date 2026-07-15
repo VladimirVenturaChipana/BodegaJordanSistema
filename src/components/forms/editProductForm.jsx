@@ -18,7 +18,7 @@ export default function EditProductForm({
   handleSaveProduct,
   formValues,
   handleInputChange,
-  setFormValues // Importante pasarlo para el Switch
+  setFormValues
 }) {
   return (
     <Dialog
@@ -55,7 +55,7 @@ export default function EditProductForm({
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
-                label="Presentación / Unidad (Ej: Botella 1L, Pack x6)"
+                label="Presentación / Unidad"
                 name="unit"
                 value={formValues.unit}
                 onChange={handleInputChange}
@@ -97,7 +97,6 @@ export default function EditProductForm({
                 name="image"
                 value={formValues.image}
                 onChange={handleInputChange}
-                placeholder="https://ejemplo.com/imagen.jpg"
                 fullWidth
               />
             </Grid>
@@ -108,11 +107,13 @@ export default function EditProductForm({
                 value={formValues.codbar}
                 onChange={handleInputChange}
                 fullWidth
+                disabled={isEditMode}
+                helperText={isEditMode ? "El código de barras no puede modificarse" : ""}
               />
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
-                label="ID Categoría (1: Bebidas, 2: Licores...)"
+                label="ID Categoría"
                 name="idcategoria"
                 type="number"
                 value={formValues.idcategoria}

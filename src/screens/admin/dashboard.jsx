@@ -5,7 +5,8 @@ import NavBarAdmin from "../../components/navBar/navBarAdmin";
 
 import AddCatalog from './addCatalog'
 import ActiveDeliveries from './activeDeliveries'
-import RegisterEmployee from './registerEmloyee'
+import RegisterEmployee from './registerEmployee'
+import AddOptions from "./addOptions";
 
 const drawerWidth = 250;
 
@@ -30,12 +31,13 @@ export default function Dashboard() {
           </Grid>
         );
       case "Registrar Empleados":
-        // Retorna el componente de tu módulo correspondiente
         return <RegisterEmployee />;
       case "Ver Delivery Activos":
         return <ActiveDeliveries />;
       case "Agregar al Catálogo":
         return <AddCatalog />;
+      case "Agregar opciones":
+        return <AddOptions />;
       default:
         return (
           <Grid item xs={12} md={4}>

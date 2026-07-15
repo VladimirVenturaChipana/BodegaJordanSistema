@@ -10,6 +10,7 @@ import MediaCard from "../../components/cardProduct/cardProduct";
 import { getAllProducts } from "../../hooks/API/servicesProducts";
 import EditProductForm from "../../components/forms/editProductForm";
 
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function AddCatalog() {
   const [products, setProducts] = useState([]);
