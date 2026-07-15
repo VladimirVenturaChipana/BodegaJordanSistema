@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { supabase } from '../../lib/supabase';
 import { useAuthStore } from '../../hooks/servicesStore';
 import { Button, Typography, Box, IconButton, InputAdornment, Divider, Grid } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
@@ -13,6 +14,16 @@ export default function LoginForm({ handleClose }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  const handleGoogleLogin = async () => {
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${window.location.origin}/auth/callback`
+    }
+  });
+  if (error) console.error('Error:', error.message);
+};
 
   const handleLogin = async () => {
     // Validaciones
@@ -108,6 +119,15 @@ export default function LoginForm({ handleClose }) {
           Regístrate
         </Box>
       </Typography>
+
+      <Button
+        fullWidth
+        variant="outlined"
+        onClick={handleGoogleLogin}
+        startIcon={<img src="https://www.google.com/favicon.ico" width="20" />}
+      >
+        Continuar con Google
+      </Button>
     </Grid>
   );
 }

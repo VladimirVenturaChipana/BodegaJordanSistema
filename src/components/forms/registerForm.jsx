@@ -39,7 +39,7 @@ export default function RegisterForm({ showPassword, handleClickShowPassword }) 
         return;
       }
 
-      navigate('/home'); // ojo: revisa que esta ruta exista en tu App.jsx (la tenías como /registerCustomer, así que verifica cómo se llama tu ruta de login)
+      navigate('/'); // ojo: revisa que esta ruta exista en tu App.jsx (la tenías como /registerCustomer, así que verifica cómo se llama tu ruta de login)
 
     } catch (error) {
       setError('Error de conexión, intenta de nuevo');
