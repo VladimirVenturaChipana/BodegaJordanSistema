@@ -14,6 +14,7 @@ import { getProductsByCategory } from '../../../hooks/API/servicesProducts';
 
 export default function Home() {
   const [categoriesData, setCategoriesData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
@@ -27,8 +28,12 @@ export default function Home() {
         setCategoriesData(dataMap);
       } catch (err) {
         console.error("Error general cargando las categorías del Home:", err);
+      } finally {
+        setIsLoading(false);
       }
     };
+
+    setIsLoading(true);
     loadData();
   }, []);
 
@@ -42,6 +47,7 @@ export default function Home() {
           highlightTitle={section.highlight}
           title={section.title}
           products={categoriesData[section.id] || []}
+          isLoading={isLoading}
         />
       ))}
       <Box sx={{ height: '60px', display: { xs: 'block', sm: 'none' } }} />

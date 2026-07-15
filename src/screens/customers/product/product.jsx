@@ -15,31 +15,35 @@ export default function Product() {
   const [similarProducts, setSimilarProducts] = useState([]);
   const [brandProducts, setBrandProducts] = useState([]);
 
+  const [loadingSliders, setLoadingSliders] = useState(true);
+
   useEffect(() => {
     setSimilarProducts([]);
     setBrandProducts([]);
+    setLoadingSliders(true);
 
-    getProductById(id)
-      .then(data => {
+    const fetchProductData = async () => {
+      try {
+        const data = await getProductById(id);
         setProduct(data);
+
         if (data) {
-          if (data.idcategoria) {
-            getProductsByCategory(data.idcategoria)
-              .then(res => {
-                setSimilarProducts(res.filter(p => Number(p.id) !== Number(data.id)));
-              })
-              .catch(err => console.error("Error al cargar productos similares:", err));
-          }
-          if (data.idmarca) {
-            getProductsByBrand(data.idmarca)
-              .then(res => {
-                setBrandProducts(res.filter(p => Number(p.id) !== Number(data.id)));
-              })
-              .catch(err => console.error("Error al cargar productos de la marca:", err));
-          }
+          const reqCategory = data.idcategoria ? getProductsByCategory(data.idcategoria) : Promise.resolve([]);
+          const reqBrand = data.idmarca ? getProductsByBrand(data.idmarca) : Promise.resolve([]);
+
+          const [similares, marcas] = await Promise.all([reqCategory, reqBrand]);
+
+          setSimilarProducts(similares.filter(p => Number(p.id) !== Number(data.id)));
+          setBrandProducts(marcas.filter(p => Number(p.id) !== Number(data.id)));
         }
-      })
-      .catch(err => console.error("Error al cargar el producto:", err))
+      } catch (err) {
+        console.error("Error al cargar la información:", err);
+      } finally {
+        setLoadingSliders(false);
+      }
+    };
+
+    fetchProductData();
   }, [id]);
 
   if (!product) {
@@ -48,18 +52,26 @@ export default function Product() {
 
   return (
     <MainLayout>
-
-      <Box sx={{
-        display: 'flex', justifyContent: 'center', px: { xs: 2, md: 4 }, py: { xs: 2, md: 4 },
-      }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', px: { xs: 2, md: 4 }, py: { xs: 2, md: 4 } }}>
         <Grid container spacing={4} sx={{ maxWidth: 900, width: '100%', alignItems: 'center' }}>
           <ProductImage src={product.image} title={product.title} />
           <ProductInfo product={product} />
         </Grid>
       </Box>
       <Box sx={{ maxWidth: 'xl', mx: 'auto', mt: 1 }}>
-        <SliderProducts highlightTitle="Productos" title="similares" products={similarProducts} />
-        <SliderProducts highlightTitle={product.marca || product.brand} title="te ofrece" products={brandProducts} />
+        {/* Le pasamos el estado isLoading a tus sliders */}
+        <SliderProducts
+          highlightTitle="Productos"
+          title="similares"
+          products={similarProducts}
+          isLoading={loadingSliders}
+        />
+        <SliderProducts
+          highlightTitle={product.marca || product.brand || 'Esta marca'}
+          title="te ofrece"
+          products={brandProducts}
+          isLoading={loadingSliders}
+        />
       </Box>
       <Box sx={{ height: '60px', display: { xs: 'block', sm: 'none' } }} />
     </MainLayout>
