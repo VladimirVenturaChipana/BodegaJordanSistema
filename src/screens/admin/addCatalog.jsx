@@ -4,10 +4,8 @@ import {
   Pagination, CircularProgress, Snackbar, Alert, IconButton
 } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import SearchBar from "../../components/searchBar/searchBar";
-import { AddIcon } from "../../shared/icons";
+import { AddIcon, VisibilityIcon, VisibilityOffIcon } from "../../shared/icons";
 import MediaCard from "../../components/cardProduct/cardProduct";
 import { getAllProducts } from "../../hooks/API/servicesProducts";
 import EditProductForm from "../../components/forms/editProductForm";

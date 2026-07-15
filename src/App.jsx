@@ -40,7 +40,7 @@ function App() {
         <BrowserRouter>
           <ScrollToTop />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Dashboard />} />
             <Route path="/category/:categoryName" element={<Category />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/profile" element={<Profile />} />
