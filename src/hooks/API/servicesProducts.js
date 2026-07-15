@@ -1,4 +1,18 @@
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL
+
+export const getAllProducts = async () => {
+    try {
+        const res = await fetch(`${API_URL}/api/productos`);
+        if (!res.ok) {
+            throw new Error(`Error al obtener los productos`);
+        }
+        return await res.json();
+    } catch (error) {
+        console.error("Error en productService (getAllProducts):", error);
+        throw error;
+    }
+}
+
 
 /**
  * Obtiene el detalle de un producto por su ID desde la API.
