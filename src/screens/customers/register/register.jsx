@@ -48,7 +48,6 @@ export default function RegisterCustomer() {
           </Grid>
         </Grid>
       </Box>
-      <Box sx={{ height: '60px', display: { xs: 'block', sm: 'none' } }} />
     </MainLayout>
   );
 }

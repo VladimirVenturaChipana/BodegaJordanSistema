@@ -16,6 +16,7 @@ import Profile from './screens/customers/profile';
 import CheckOut from './screens/customers/checkout';
 import RegisterCustomer from './screens/customers/register/register';
 import Dashboard from './screens/admin/dashboard';
+import ScrollToTop from './components/scrollToTop';
 
 import './App.css';
 
@@ -38,6 +39,7 @@ function App() {
       <ThemeProvider theme={isLight ? lightTheme : darkTheme}>
         <CssBaseline />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/auth/callback" element={<AuthCallback />} />

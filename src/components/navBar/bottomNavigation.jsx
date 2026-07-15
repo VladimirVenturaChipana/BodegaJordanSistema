@@ -1,19 +1,28 @@
-import { Paper, BottomNavigation, BottomNavigationAction } from "@mui/material";
+import { Paper, BottomNavigation, BottomNavigationAction, Badge } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { HomeIcon, ShoppingCartIcon, LocalMallIcon } from "../../shared/icons";
 import { useAuthStore } from "../../hooks/servicesStore";
-import LoginModal from '../../screens/customers/login/loginModal'
+import { useCartStore } from "../../hooks/servicesStore";
+import LoginModal from '../../screens/customers/login/loginModal';
 
 export default function BottomNav({ value, onChange }) {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const [open, setOpen] = useState(false);
 
-  const handleProtectedAction = (e) => {
+  const cart = useCartStore((state) => state.cart);
+  const totalItems = cart.length;
+
+  const handleProtectedAction = (e, path) => {
+    e.preventDefault();
     if (!isAuthenticated) {
-      e.preventDefault();
       setOpen(true);
+    } else {
+      navigate(path);
     }
   };
+
+  const navigate = useNavigate();
 
   return (
     <Paper
@@ -28,11 +37,26 @@ export default function BottomNav({ value, onChange }) {
       elevation={3}
     >
       <BottomNavigation showLabels value={value} onChange={onChange}>
-        <BottomNavigationAction label="Inicio" href="/" icon={<HomeIcon />} />
-        <BottomNavigationAction label="Carrito" href={isAuthenticated ? "/checkout" : undefined} onClick={handleProtectedAction} icon={<ShoppingCartIcon />} />
-        <BottomNavigationAction label="Mis compras" href={isAuthenticated ? "/profile" : undefined} onClick={handleProtectedAction} icon={<LocalMallIcon />} />
+        {/* 4. Cambia los href por onClick con navigate */}
+        <BottomNavigationAction
+          label="Inicio"
+          onClick={(e) => { e.preventDefault(); navigate('/'); }}
+          icon={<HomeIcon />}
+        />
+        <BottomNavigationAction
+          label="Carrito"
+          onClick={(e) => handleProtectedAction(e, '/checkout')}
+          icon={
+            <Badge badgeContent={totalItems} color="error">
+              <ShoppingCartIcon />
+            </Badge>}
+        />
+        <BottomNavigationAction
+          label="Mis compras"
+          onClick={(e) => handleProtectedAction(e, '/profile')}
+          icon={<LocalMallIcon />}
+        />
       </BottomNavigation>
-
       <LoginModal open={open} handleClose={() => setOpen(false)} />
     </Paper>
   );

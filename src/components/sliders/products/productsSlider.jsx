@@ -9,14 +9,21 @@ import MediaCard from '../../cardProduct/cardProduct';
 export default function SliderProducts({
   highlightTitle = "LICORES",
   title = "PARA TU FIN DE SEMANA",
-  products = []
+  products = [],
+  isLoading = true // <--- ¡Nueva prop! Por defecto en true
 }) {
 
   const theme = useTheme();
 
-  const displayProducts = products.length > 0
-    ? products.slice(0, 8)
-    : Array.from({ length: 8 });
+  // Si ya terminó de cargar y no hay productos, NO renderizamos el slider.
+  if (!isLoading && products.length === 0) {
+    return null;
+  }
+
+  // Ahora controlamos los esqueletos basados en isLoading real
+  const displayProducts = isLoading
+    ? Array.from({ length: 8 })
+    : products.slice(0, 8);
 
   return (
     <Container maxWidth="xl">
